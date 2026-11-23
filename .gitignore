@@ -1,0 +1,212 @@
+# =============================================================================
+# Salesforce Data Cloud Code Extension (Python / PySpark) - .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Credentials, secrets and environment files (NEVER commit)
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+.envrc
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.secret
+*.secrets
+secrets.*
+credentials*
+!credentials.example*
+*.credentials
+auth.json
+token.json
+*.token
+.netrc
+.pypirc
+.datacustomcode/
+
+# -----------------------------------------------------------------------------
+# Salesforce CLI / SFDX local state (contains org auth & session info)
+# -----------------------------------------------------------------------------
+.sf/
+.sfdx/
+.localdevserver/
+.sfdx-hardis*
+sfdx-auth-url*
+*.sfdx-auth
+debug.log
+
+# -----------------------------------------------------------------------------
+# Lock files and session-specific files
+# -----------------------------------------------------------------------------
+*.lock
+*-lock.json
+*.lock.json
+lock.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+poetry.lock
+Pipfile.lock
+uv.lock
+pdm.lock
+.devcontainer/devcontainer-lock.json
+*.pid
+*.sock
+*.session
+*.swp
+*.swo
+*~
+.~lock.*#
+nohup.out
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+pip-wheel-metadata/
+
+# Virtual environments / interpreter pins
+.venv/
+venv/
+env/
+ENV/
+.python-version
+__pypackages__/
+
+# Testing / coverage / type-check / lint caches
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+nosetests.xml
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+cython_debug/
+
+# -----------------------------------------------------------------------------
+# Jupyter / IPython
+# -----------------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+profile_default/
+ipython_config.py
+.jupyter/
+.local/
+
+# -----------------------------------------------------------------------------
+# Spark / PySpark / Hadoop local run artifacts
+# -----------------------------------------------------------------------------
+spark-warehouse/
+metastore_db/
+derby.log
+spark-events/
+checkpoint/
+checkpoints/
+*.crc
+_SUCCESS
+.hive-staging*
+tmp/
+temp/
+
+# -----------------------------------------------------------------------------
+# datacustomcode build / deployment outputs
+# -----------------------------------------------------------------------------
+deployment.zip
+*.zip
+*.tar.gz
+*.tgz
+native_dependencies.tar.gz
+output/
+outputs/
+
+# Local data outputs
+*.parquet
+*.orc
+*.avro
+data/
+
+# -----------------------------------------------------------------------------
+# Logs
+# -----------------------------------------------------------------------------
+*.log
+logs/
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+.docker/
+docker-compose.override.yml
+
+# -----------------------------------------------------------------------------
+# Editors, IDEs and AI-assistant local config
+# -----------------------------------------------------------------------------
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+.history/
+.mcp.json
+.claude/
+CLAUDE.local.md
+.cursor/
+.aider*
+
+# -----------------------------------------------------------------------------
+# OS-generated files
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/

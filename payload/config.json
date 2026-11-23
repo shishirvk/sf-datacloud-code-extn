@@ -1,0 +1,17 @@
+{
+  "sdkVersion": "6.1.0",
+  "entryPoint": "entrypoint.py",
+  "dataspace": "default",
+  "permissions": {
+    "read": {
+      "dlo": [
+        "Account_std__dll"
+      ]
+    },
+    "write": {
+      "dlo": [
+        "Account_std_copy__dll"
+      ]
+    }
+  }
+}
