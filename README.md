@@ -114,11 +114,11 @@ Using bash? Put the Java and pyenv lines in `~/.bashrc` and run `source .venv/bi
 npm install --global @salesforce/cli                        # or see https://developer.salesforce.com/tools/salesforcecli
 sf plugins install @salesforce/plugin-data-code-extension   # adds `sf data-code-extension`
 
-sf org login web --alias agent_prod                         # opens a browser; use your Data Cloud org
-sf org list                                                 # agent_prod should show as Connected
+sf org login web --alias my-dc-org                          # opens a browser; use your Data Cloud org
+sf org list                                                 # my-dc-org should show as Connected
 ```
 
-You can use any alias. Use the same one with `--target-org` / `--sf-cli-org` below. The CLI connection is all you need; `datacustomcode configure` (username/password or client credentials) is only an alternative.
+`my-dc-org` is a placeholder; use any alias you like, and use the same one with `--target-org` / `--sf-cli-org` below. The CLI connection is all you need; `datacustomcode configure` (username/password or client credentials) is only an alternative.
 
 ## 5. Verify and run
 
@@ -132,7 +132,7 @@ java -version        # -> openjdk version "17..."
 datacustomcode version
 
 # run the script locally against org data
-sf data-code-extension script run --entrypoint ./payload/entrypoint.py --target-org agent_prod
+sf data-code-extension script run --entrypoint ./payload/entrypoint.py --target-org my-dc-org
 ```
 
 Other useful commands:
@@ -140,13 +140,13 @@ Other useful commands:
 ```bash
 sf data-code-extension script --help     # scan / zip / deploy etc.
 sf data-code-extension script scan       # refresh payload/config.json + requirements.txt after editing the entrypoint
-datacustomcode run ./payload/entrypoint.py --sf-cli-org agent_prod   # SDK-native equivalent of the run above
+datacustomcode run ./payload/entrypoint.py --sf-cli-org my-dc-org    # SDK-native equivalent of the run above
 ```
 
 **Before the first run:** the sample `entrypoint.py` from `init` reads `Account_std__dll`, and that table may not exist in your org. Change `client.read_dlo(...)` and any `write_to_dlo(...)` to Data Lake Objects that do exist. To list them:
 
 ```bash
-sf api request rest "/services/data/v63.0/ssot/data-lake-objects" --target-org agent_prod
+sf api request rest "/services/data/v63.0/ssot/data-lake-objects" --target-org my-dc-org
 ```
 
 This endpoint returns at most 20 objects per page. Add `?offset=20` to get the next page.
@@ -158,7 +158,7 @@ This endpoint returns at most 20 objects per page. Add `?offset=20` to get the n
 | Python version error, or `No matching distribution found for salesforce-data-customcode` | `python3` is 3.12+, so the venv isn't active | `source .venv/bin/activate` or open a new terminal; check with `which python3`. In the VS Code terminal, select `.venv/bin/python` via **Python: Select Interpreter** |
 | `Unable to locate a Java Runtime` / `JAVA_GATEWAY_EXITED` | `JAVA_HOME` isn't set, so `/usr/bin/java` is the macOS placeholder | Step 2 + step 3, then `java -version` |
 | `table "<name>__dll" does not exist` | The entrypoint references a DLO that isn't in the org | Use a DLO from the list above, then run `script scan` |
-| `No authorization information found for agent_prod` | The org isn't logged in under that alias | `sf org login web --alias agent_prod` |
+| `No authorization information found for my-dc-org` | The org isn't logged in under that alias | `sf org login web --alias my-dc-org` |
 
 ## Credentials and secrets
 
